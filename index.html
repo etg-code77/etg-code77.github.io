@@ -49,14 +49,14 @@
 		if ( "serviceWorker" in navigator ) {
 			navigator.serviceWorker.register( "/sw.js" )
 				.then( function ( registration ) { // Registration was successful
-					alert( "ServiceWorker registration successful with scope: "+ registration.scope );
+					console.log( "ServiceWorker registration successful with scope: "+ registration.scope );
 				} ).catch( function ( err ) { // registration failed :(
-					alert( "ServiceWorker registration failed: "+ err );
+					console.log( "ServiceWorker registration failed: "+ err );
 				} );
 		}
     </script>
 </head>
 <body>
-	<h1>This is a test 2</h1>
+	<h1>This is a test 3</h1>
 </body>
 </html>
