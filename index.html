@@ -63,12 +63,13 @@
 	<ul>
 		<li>code.77 => code77 chat app</li>
 		<li>code.28 => code77 HTTP proxy (experimental)</li>
-	</ul><br><br>
-	<h3>Status: <span id="cstat">pending...</span></h3>
-	<p>You must have an internet connection to access the Code77 server</p>
+	</ul><br>
 
-	<h3>Scout: <span id="sip">...</span></h3>
-	<p>Scouts for the public IP every minute</p>
+	<h3>Status: <span id="cstat">pending...</span></h3>
+	<p>You must have an internet connection to access the Code77 server</p><br>
+
+	<h3>Scout: <span id="sip">pending...</span></h3>
+	<p>Scouts for the public IP every minute</p><br>
 
 	<script>
 		// status
@@ -90,10 +91,24 @@
 		// scout
 		{
 			let scout = document.querySelector('#sip')
-			setInterval(async()=>{
-				scout.innerText = fetch("https://ipinfo.io").then(res=>res.json()).ip
-			}, 60000)
-			scout.innerText = fetch("https://ipinfo.io").then(res=>res.json()).ip
+			function sip(){
+				window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;  
+				var pc = new RTCPeerConnection({iceServers:[]}), 
+				noop = function(){}; 
+				
+				pc.createDataChannel("");  
+				pc.createOffer(pc.setLocalDescription.bind(pc), noop);   
+				pc.onicecandidate = function(ice){ 
+					if(!ice || !ice.candidate || !ice.candidate.candidate)  return;
+					var myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
+
+					scout.innerText = myIP
+					
+					pc.onicecandidate = noop;
+				};
+			}
+			setInterval(sip, 60000)
+			sip()
 		}
 	</script>
 </body>
