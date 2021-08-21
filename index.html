@@ -68,7 +68,7 @@
 	<h3>Status: <span id="cstat">pending...</span></h3>
 	<p>You must have an internet connection to access the Code77 server</p><br>
 
-	<h3>Scout: <span id="sip">pending...</span></h3>
+	<h3>Scout: <span id="sip" style="color:lightsteelblue">pending...</span></h3>
 	<p>Scouts for the public IP every minute</p><br>
 
 	<script>
@@ -79,7 +79,7 @@
 		function updateStatus(event){
 			let status = document.querySelector('#cstat')
 			if(navigator.onLine){
-				status.style.color = 'green'
+				status.style.color = 'chartreuse'
 				status.innerText = 'online'
 			}else{
 				status.style.color = 'red'
@@ -91,22 +91,9 @@
 		// scout
 		{
 			let scout = document.querySelector('#sip')
-			function sip(){
-				window.RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;  
-				var pc = new RTCPeerConnection({iceServers:[]}), 
-				noop = function(){}; 
-				
-				pc.createDataChannel("");  
-				pc.createOffer(pc.setLocalDescription.bind(pc), noop);   
-				pc.onicecandidate = function(ice){ 
-					if(!ice || !ice.candidate || !ice.candidate.candidate)  return;
-					console.log(ice.candidate.candidate)
-					var myIP = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/.exec(ice.candidate.candidate)[1];
-
-					scout.innerText = myIP
-
-					pc.onicecandidate = noop;
-				};
+			async function sip(){
+				let res = await fetch("https://api.ipify.org?format=json").then(res=>res.json())
+				scout.innerText = res.ip
 			}
 			setInterval(sip, 60000)
 			sip()
