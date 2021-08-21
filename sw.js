@@ -1,5 +1,5 @@
 //remember to increment the version # when you update the service worker
-const version = "1.01",
+const version = "1.03",
     preCache = "PRECACHE-" + version,
     cacheList = [ "/" ];
 
@@ -33,28 +33,10 @@ self.addEventListener( "activate", function ( event ) {
     );
 } );
 
-self.addEventListener( "fetch", function ( event ) {
-    event.respondWith(
-        fetch( event.request )
-        /* check the cache first, then hit the network */
-        /*
-                caches.match( event.request )
-                .then( function ( response ) {
-
-                    if ( response ) {
-                        return response;
-                    }
-
-                    return fetch( event.request );
-                } )
-        */
-    );
-} );
-
 
 /* service worker resources
 
-https: //love2dev.com/blog/what-is-the-service-worker-cache-storage-limit/
-https: //love2dev.com/blog/service-worker-cache/
+https://love2dev.com/blog/what-is-the-service-worker-cache-storage-limit/
+https://love2dev.com/blog/service-worker-cache/
 
 */
