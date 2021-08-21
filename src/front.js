@@ -14,9 +14,13 @@ function updateStatus(event){
 }
 updateStatus(null);
 
-// shifter p1
-if(window.navigator.standalone === true){
-	document.body.insertAdjacentHTML('beforeend', `<h3>Standalone mode</h3><p>The app is installed. \nThere'll be magic in a sec.</p>`)
+// shifter
+function nativep(){
+	if(window.navigator.standalone === true){
+		window.location.href = 'app.html'
+	}else{
+		alert("You must be in native mode to use the app!")
+	}
 }
 
 // scout
@@ -29,9 +33,4 @@ if(window.navigator.standalone === true){
 	}
 	setInterval(x=>{sip(scout)}, 60000)
 	sip(scout)
-}
-
-// shifter p2
-if(window.navigator.standalone === true){
-	window.location.href = 'app.html'
 }
