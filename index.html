@@ -92,6 +92,7 @@
 		{
 			let scout = document.querySelector('#sip')
 			async function sip(){
+				scout.innerText = 'Refreshing...'
 				let res = await fetch("https://api.ipify.org?format=json").then(res=>res.json())
 				scout.innerText = res.ip
 			}
