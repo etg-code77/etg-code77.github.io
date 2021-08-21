@@ -41,7 +41,6 @@
 		
 	<title>Code77</title>
 
-	<link rel="stylesheet" href="./styles/pwa.css">
 	<link rel="stylesheet" href="./styles/etigeox.css">
 	<link rel="stylesheet" href="./styles/code77.css">
 	<link rel="manifest" href="manifest.json">
@@ -56,6 +55,7 @@
 				} );
 		}
     </script>
+	<script src="./src/front.js" defer></script>
 </head>
 <body>
 	<h1>Code77 DNS Proxy</h1>
@@ -70,35 +70,5 @@
 
 	<h3>Scout: <span id="sip" style="color:lightsteelblue">pending...</span></h3>
 	<p>Scouts for the public IP on launch</p><br>
-
-	<script>
-		// status
-		window.addEventListener('online', updateStatus);
-		window.addEventListener('offline', updateStatus);
-
-		function updateStatus(event){
-			let status = document.querySelector('#cstat')
-			if(navigator.onLine){
-				status.style.color = 'chartreuse'
-				status.innerText = 'online'
-			}else{
-				status.style.color = 'red'
-				status.innerText = 'offline'
-			}
-		}
-		updateStatus(null);
-
-		// scout
-		{
-			let scout = document.querySelector('#sip')
-			async function sip(scout){
-				scout.innerText = 'Refreshing...'
-				let res = await fetch("https://jsonip.com").then(res=>res.json())
-				scout.innerText = res.ip
-			}
-			setInterval(x=>{sip(scout)}, 60000)
-			sip(scout)
-		}
-	</script>
 </body>
 </html>
