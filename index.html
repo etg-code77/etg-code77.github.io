@@ -56,6 +56,20 @@
 				} );
 		}
     </script>
+</head>
+<body>
+	<h1>Code77 DNS Proxy</h1>
+	<h2>DNS overrrides for vanity URLs</h2>
+	<ul>
+		<li>code.77 => code77 chat app</li>
+		<li>code.28 => code77 HTTP proxy (experimental)</li>
+	</ul><br><br>
+	<h3>Status: <span id="cstat">pending...</span></h3>
+	<p>You must have an internet connection to access the Code77 server</p>
+
+	<h3>Scout: <span id="sip">...</span></h3>
+	<p>Scouts for the public IP every minute</p>
+
 	<script defer>
 		// status
 		window.addEventListener('online', updateStatus);
@@ -72,8 +86,7 @@
 			}
 		}
 		updateStatus(null);
-	</script>
-	<script defer>
+
 		// scout
 		{
 			let scout = document.querySelector('#sip')
@@ -83,18 +96,5 @@
 			scout.innerText = fetch("https://ipinfo.io").then(res=>res.json()).ip
 		}
 	</script>
-</head>
-<body>
-	<h1>Code77 DNS Proxy</h1>
-	<h2>DNS overrrides for vanity URLs</h2>
-	<ul>
-		<li>code.77 => code77 chat app</li>
-		<li>code.28 => code77 HTTP proxy (experimental)</li>
-	</ul><br><br>
-	<h3>Status: <span id="cstat">pending...</span></h3>
-	<p>You must have an internet connection to access the Code77 server</p>
-
-	<h3>Scout: <span id="sip">...</span></h3>
-	<p>Scouts for the public IP every minute</p>
 </body>
 </html>
