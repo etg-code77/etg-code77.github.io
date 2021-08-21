@@ -1,0 +1,187 @@
+/************************/
+/*     MUXED.CSS        */
+/* Code77 magic styling */
+/************************/
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	font-family: 'Share Tech Mono';
+
+	/* vars */
+	--c77-menu-speed: 0.4s;
+
+	/* palette */
+	--c77-base:#000F2A;
+	--c77-text:#C1CACF;
+	--c77-text-special:#C2B3CF;
+	--c77-nav-bg:#202535;
+	--c77-nav-bga:#1B1B2B;
+	--c77-nav-bgat: rgba(22, 22, 32, 0.75);
+	--c77-nav-ico:#8095B5;
+	--c77-nav-icoa:darkcyan;
+}
+
+* {
+	box-sizing: border-box;
+	margin:0;
+	padding:0;
+}
+
+body {
+	line-height:1.4;
+}
+
+/* nav */
+.container {
+	max-width:960px;
+	margin:auto;
+	overflow:hidden;
+	padding:0 3rem;
+}
+
+.showcase {
+	height: 100vh;
+}
+
+.showcase .showcase-inner {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	height:100%;
+}
+
+.nav {
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:10;
+}
+
+.nav .toggler {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:11;
+	cursor:pointer;
+	width:50px;
+	height:50px;
+	opacity:0;
+}
+.nav .hamburger {
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:60px;
+	height:60px;
+	padding:1rem;
+	background: var(--c77-nav-bg);
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* hamburger lines */
+.nav .hamburger > div {
+	position:relative;
+	width:100%;
+	height:2px;
+	background-color: var(--c77-nav-ico);
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.4s ease;
+}
+/* top & bottom */
+.nav .hamburger > div::before,
+.nav .hamburger > div::after {
+	content:'';
+	position:absolute;
+	z-index:10;
+	top: -10px;
+	width: 100%;
+	height:2px;
+	background: var(--c77-nav-ico);
+}
+/* bottom shift */
+.nav .hamburger > div::after {
+	top: 10px
+}
+
+/* toggler animation */
+.nav .toggler:checked + .hamburger > div {
+	transform:rotate(135deg);
+}
+/* turn hamburger into x */
+.nav .toggler:checked + .hamburger > div::before,
+.nav .toggler:checked + .hamburger > div::after {
+	top:0;
+	transform: rotate(90deg);
+}
+/* rotate on hover when checked */
+.nav .toggler:checked:hover + .hamburger > div {
+	transform:rotate(225deg);
+}
+
+/* show menu */
+.nav .toggler:checked ~ .menu {
+	visibility:visible;
+}
+.nav .toggler:checked ~ .menu > div {
+	transform: scale(1);
+	transition-duration: var(--c77-menu-speed);
+}
+.nav .toggler:checked ~ .menu > div > div {
+	opacity: 1;
+	transition: opacity 0.4s, ease;
+}
+
+.nav .menu {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	visibility:hidden;
+	overflow:hidden;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.nav .menu > div {
+	background: var(--c77-nav-bgat);
+	border-radius:50%;
+	width:200vw;
+	height:200vw;
+	display:flex;
+	flex:none;
+	align-items: center;
+	justify-content:center;
+	transform: scale(0);
+	transition: all 0.4s ease;
+}
+.nav .menu > div > div {
+	text-align: center;
+	max-width: 90vw;
+	max-height: 100vh;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+
+.nav .menu > div > div > ul > li {
+	list-style:none;
+	color:var(--c77-text-special);
+	font-size: 1.5rem;
+	padding: 1rem;
+}
+.nav .menu > div > div > ul > li > a {
+	color:inherit;
+	text-decoration:none;
+	transition: color 0.4s ease;
+}

@@ -3,14 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<!-- Icons -->
+	<link rel="apple-touch-icon" href="meta/ios/ios-appicon-120-120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="meta/ios/ios-appicon-152-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="meta/ios/ios-appicon-180-180.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="meta/ios/ios-appicon-120-120.png">
+
 	<title>Code77</title>
 
 	<link rel="stylesheet" href="./styles/etigeox.css">
 	<link rel="stylesheet" href="./styles/code77.css">
 	<link rel="stylesheet" href="./styles/pwa.css">
+	<link rel="stylesheet" href="./styles/muxed.css">
+	<link rel="manifest" href="manifest.json">
 </head>
 <body>
-	<h1>It worked I guess</h1>
+	<nav class="nav">
+		<input type="checkbox" class="toggler">
+		<div class="hamburger"><div></div></div>
+		<div class="menu">
+			<div>
+				<div>
+					<ul>
+						<li><a href="#">Join Public Room</a></li>
+						<li><a href="#">Proxy to Discord</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<main>
+		<div class="showcase">
+			<div class="container showcase-inner">
+				<h1>Code77</h1>
+				<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt necessitatibus commodi officia dicta dignissimos. Expedita quos, at nulla accusantium dolorum blanditiis quas ab nostrum vel autem commodi eaque fugiat dolores veritatis. Voluptas suscipit numquam ea dolores nemo vel, ab natus molestiae. Cum totam ratione maxime ab rem ducimus, inventore libero!</p>
+			</div>
+		</div>
+	</main>
 </body>
 </html>
