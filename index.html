@@ -91,13 +91,13 @@
 		// scout
 		{
 			let scout = document.querySelector('#sip')
-			async function sip(){
+			async function sip(scout){
 				scout.innerText = 'Refreshing...'
 				let res = await fetch("https://thingproxy.freeboard.io/fetch/https://api.ipify.org?format=json").then(res=>res.json())
 				scout.innerText = res.ip
 			}
-			setInterval(sip, 60000)
-			sip()
+			setInterval(x=>{sip(scout)}, 60000)
+			sip(scout)
 		}
 	</script>
 </body>
