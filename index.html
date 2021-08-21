@@ -56,6 +56,32 @@
 				} );
 		}
     </script>
+	<script defer>
+		// status
+		window.addEventListener('online', updateStatus);
+		window.addEventListener('offline', updateStatus);
+
+		function updateStatus(event){
+			let status = document.querySelector('#cstat')
+			if(navigator.onLine){
+				status.style.color = 'green'
+				status.innerText = 'online'
+			}else{
+				status.style.color = 'red'
+				status.innerText = 'offline'
+			}
+		}
+	</script>
+	<script>
+		// scout
+		{
+			let scout = document.querySelector('#sip')
+			setInterval(async()=>{
+				scout.innerText = fetch("https://ipinfo.io").then(res=>res.json()).ip
+			}, 60000)
+			scout.innerText = fetch("https://ipinfo.io").then(res=>res.json()).ip
+		}
+	</script>
 </head>
 <body>
 	<h1>Code77 DNS Proxy</h1>
@@ -63,6 +89,11 @@
 	<ul>
 		<li>code.77 => code77 chat app</li>
 		<li>code.28 => code77 HTTP proxy (experimental)</li>
-	</ul>
+	</ul><br><br>
+	<h3>Status: <span id="cstat">pending...</span></h3>
+	<p>You must have an internet connection to access the Code77 server</p>
+
+	<h3>Scout: <span id="sip">...</span></h3>
+	<p>Scouts for the public IP every minute</p>
 </body>
 </html>
