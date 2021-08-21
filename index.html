@@ -69,7 +69,7 @@
 	<p>You must have an internet connection to access the Code77 server</p><br>
 
 	<h3>Scout: <span id="sip" style="color:lightsteelblue">pending...</span></h3>
-	<p>Scouts for the public IP every minute</p><br>
+	<p>Scouts for the public IP on launch</p><br>
 
 	<script>
 		// status
@@ -93,7 +93,7 @@
 			let scout = document.querySelector('#sip')
 			async function sip(scout){
 				scout.innerText = 'Refreshing...'
-				let res = await fetch("https://thingproxy.freeboard.io/fetch/https://api.ipify.org?format=json").then(res=>res.json())
+				let res = await fetch("https://jsonip.com").then(res=>res.json())
 				scout.innerText = res.ip
 			}
 			setInterval(x=>{sip(scout)}, 60000)
