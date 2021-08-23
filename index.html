@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,11 +20,11 @@
 	<link href="meta/ios/apple-touch-startup-image-640x920.png"
 		media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 	<!-- iPad (portrait) SPLASHSCREEN-->
-	<link href="meta/ios/apple-touch-startup-image-768x1004.png" media="(device-width: 768px) and (orientation: portrait)"
-		rel="apple-touch-startup-image">
+	<link href="meta/ios/apple-touch-startup-image-768x1004.png"
+		media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
 	<!-- iPad (landscape) SPLASHSCREEN-->
-	<link href="meta/ios/apple-touch-startup-image-748x1024.png" media="(device-width: 768px) and (orientation: landscape)"
-		rel="apple-touch-startup-image">
+	<link href="meta/ios/apple-touch-startup-image-748x1024.png"
+		media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
 	<!-- iPad (Retina, portrait) SPLASHSCREEN-->
 	<link href="meta/ios/apple-touch-startup-image-1536x2008.png"
 		media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
@@ -38,7 +39,7 @@
 	<!-- iPhone 6 Plus/7 Plus/8 Plus -->
 	<link href="/meta/ios/apple-touch-startup-image-1242x2208.png"
 		media="(device-width: 414px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-		
+
 	<title>DNS77</title>
 
 	<link rel="stylesheet" href="./styles/etigeox.css">
@@ -46,17 +47,18 @@
 	<link rel="manifest" href="manifest.json">
 
 	<script>
-		if ( "serviceWorker" in navigator ) {
-			navigator.serviceWorker.register( "/sw.js" )
-				.then( function ( registration ) { // Registration was successful
-					console.log( "ServiceWorker registration successful with scope: "+ registration.scope );
-				} ).catch( function ( err ) { // registration failed :(
-					console.log( "ServiceWorker registration failed: "+ err );
-				} );
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("/sw.js")
+				.then(function (registration) { // Registration was successful
+					console.log("ServiceWorker registration successful with scope: " + registration.scope);
+				}).catch(function (err) { // registration failed :(
+					console.log("ServiceWorker registration failed: " + err);
+				});
 		}
-    </script>
+	</script>
 	<script src="./src/front.js" defer></script>
 </head>
+
 <body>
 	<h1>Code77 DNS Proxy</h1>
 	<h2>Why not circumvent everything.</h2>
@@ -71,4 +73,5 @@
 	<h3>Scout: <span id="sip" style="color:lightsteelblue">pending...</span></h3>
 	<p>Scouts for the public IP every minute</p><br>
 </body>
+
 </html>
