@@ -1,5 +1,5 @@
 //remember to increment the version # when you update the service worker
-const version = "1.03",
+const version = "1.06",
     preCache = "PRECACHE-" + version,
     cacheList = ["/"];
 
@@ -23,6 +23,7 @@ self.addEventListener("activate", function (event) {
         //wholesale purge of previous version caches
         caches.keys().then(cacheNames => {
             cacheNames.forEach(value => {
+                if (value.indexOf("PRECACHE-")<0) return
                 if (value.indexOf(version) < 0) {
                     caches.delete(value);
                 }
